@@ -5,7 +5,8 @@ const divide = (a, b) => a / b;
 
 const display = document.querySelector("#display")
 const numButtons = document.querySelectorAll(".num-button");
-const operatorButtons = document.querySelectorAll("#operators button")
+const operatorButtons = document.querySelectorAll(".operator-button")
+const equalButton = document.querySelector("#equal")
 
 function operate(operator, a, b) {
     if (operator == "+") {
@@ -19,10 +20,16 @@ function operate(operator, a, b) {
     };
 };
 
-
 numButtons.forEach(numButton => {
     numButton.addEventListener("click", (e) => {
         let value = e.target.textContent
+        display.append(value)
+    });
+});
+
+operatorButtons.forEach(operatorButton => {
+    operatorButton.addEventListener("click", (e) => {
+        let value = e.target.textContent;
         display.append(value)
     });
 });
