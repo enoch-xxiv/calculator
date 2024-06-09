@@ -15,11 +15,21 @@ function operate(operator, a, b) {
     };
 };
 
+function clearDisplay() {
+    display.textContent = ""
+};
+
 const display = document.querySelector("#display")
 const numButtons = document.querySelectorAll(".num-button");
 const operatorButtons = document.querySelectorAll(".operator-button");
 const clearButton = document.querySelector("#clear-button");
+const equalButton = document.querySelector("#equal-button");
 
+clearButton.addEventListener("click", clearDisplay);
+
+let firstNumber;
+let operator;
+let secondNumber;
 
 numButtons.forEach(numButton => {
     numButton.addEventListener("click", (e) => {
@@ -30,11 +40,13 @@ numButtons.forEach(numButton => {
 
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener("click", (e) => {
-        let value = ` ${e.target.textContent} `;
-        display.append(value);
+        firstNumber = Number(display.textContent);
+        operator = e.target.textContent;
+        clearDisplay();
     });
 });
 
-clearButton.addEventListener("click", () => {
-    display.textContent = ""
-});
+equalButton.addEventListener("click", () => {
+    secondNumber = Number(display.textContent);
+    display.textContent = operate(operator, firstNumber, secondNumber)
+})
