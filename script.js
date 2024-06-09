@@ -11,7 +11,11 @@ function operate(operator, a, b) {
     } else if (operator == "x") {
         return multiply(a,b);
     } else if (operator == "÷") {
-        return divide(a,b);
+        if (b !== 0) {
+            return divide(a,b);
+        } else {
+            return "😭😭😭😭😭😭"
+        }
     };
 };
 
@@ -25,11 +29,16 @@ const operatorButtons = document.querySelectorAll(".operator-button");
 const clearButton = document.querySelector("#clear-button");
 const equalButton = document.querySelector("#equal-button");
 
-clearButton.addEventListener("click", clearDisplay);
-
 let firstNumber;
 let operator;
 let secondNumber;
+
+clearButton.addEventListener("click", () => {
+    firstNumber = null;
+    operator = null;
+    secondNumber = null;
+    clearDisplay();
+});
 
 numButtons.forEach(numButton => {
     numButton.addEventListener("click", (e) => {
