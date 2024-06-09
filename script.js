@@ -58,9 +58,13 @@ operatorButtons.forEach(operatorButton => {
 equalButton.addEventListener("click", () => {
     secondNumber = Number(display.textContent);
     let result = operate(operator, firstNumber, secondNumber);
-    if (Number.isInteger(result)) {
-    display.textContent = result;
+    if (typeof result === "number") {
+        if (Number.isInteger(result)) {
+            display.textContent = result;
+        } else {
+            display.textContent = result.toFixed(2);
+        }
     } else {
-        display.textContent = result.toFixed(2);
+        display.textContent = result;
     }
 })
