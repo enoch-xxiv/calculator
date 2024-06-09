@@ -16,5 +16,5 @@ function operate(operator, a, b) {
         return multiply(a,b);
     } else if (operator == "÷") {
         return divide(a,b);
-    }
-}
+    };
+};
