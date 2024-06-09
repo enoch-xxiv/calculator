@@ -17,8 +17,8 @@ function operate(operator, a, b) {
 
 const display = document.querySelector("#display")
 const numButtons = document.querySelectorAll(".num-button");
-const operatorButtons = document.querySelectorAll(".operator-button")
-const equalButton = document.querySelector("#equal-button")
+const operatorButtons = document.querySelectorAll(".operator-button");
+const clearButton = document.querySelector("#clear-button");
 
 
 numButtons.forEach(numButton => {
@@ -35,9 +35,6 @@ operatorButtons.forEach(operatorButton => {
     });
 });
 
-equalButton.addEventListener("click", () => {
-    let [firstNumber, operator, secondNumber] = display.textContent.split(" ");
-    firstNumber = Number(firstNumber)
-    secondNumber = Number(secondNumber)
-    display.textContent = operate(operator, firstNumber, secondNumber)
+clearButton.addEventListener("click", () => {
+    display.textContent = ""
 });
