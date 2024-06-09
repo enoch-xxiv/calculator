@@ -37,6 +37,7 @@ clearButton.addEventListener("click", () => {
     firstNumber = null;
     operator = null;
     secondNumber = null;
+    result = null;
     clearDisplay();
 });
 
@@ -50,14 +51,18 @@ numButtons.forEach(numButton => {
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener("click", (e) => {
         firstNumber = Number(display.textContent);
+        console.log(firstNumber)
         operator = e.target.textContent;
+        console.log(operator)
         clearDisplay();
     });
 });
 
 equalButton.addEventListener("click", () => {
     secondNumber = Number(display.textContent);
+    console.log(secondNumber)
     let result = operate(operator, firstNumber, secondNumber);
+    console.log(result)
     if (typeof result === "number") {
         if (Number.isInteger(result)) {
             display.textContent = result;
