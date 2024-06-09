@@ -3,9 +3,9 @@ const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
-let firstNumber;
-let operator;
-let secondNumber;
+const display = document.querySelector("#display")
+const numButtons = document.querySelectorAll(".num-button");
+const operatorButtons = document.querySelectorAll("#operators button")
 
 function operate(operator, a, b) {
     if (operator == "+") {
@@ -18,3 +18,11 @@ function operate(operator, a, b) {
         return divide(a,b);
     };
 };
+
+
+numButtons.forEach(numButton => {
+    numButton.addEventListener("click", (e) => {
+        let value = e.target.textContent
+        display.append(value)
+    });
+});
